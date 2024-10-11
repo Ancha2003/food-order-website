@@ -21,25 +21,24 @@ function Footer() {
               <ul>
                 <li>
                   <a className="text-muted" href="">
-                    {" "}
                     About Us
                   </a>
                 </li>
                 <li>
                   <a className="text-muted" href="">
-                    {" "}
-                    J.D Corporate{" "}
+                    
+                    J.D Corporate
                   </a>
                 </li>
                 <li>
                   <a className="text-muted" href="">
-                    {" "}
-                    Careers{" "}
+              
+                    Careers
                   </a>
                 </li>
                 <li>
                   <a className="text-muted" href="">
-                    {" "}
+                
                     Team
                   </a>
                 </li>
@@ -58,13 +57,11 @@ function Footer() {
                 </li>
 
                 <li>
-                  {" "}
                   <a className="text-muted" href="">
-                    Partner with us{" "}
+                    Partner with us
                   </a>
                 </li>
                 <li>
-                  {" "}
                   <a className="text-muted" href="">
                     Ride with us
                   </a>

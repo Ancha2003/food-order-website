@@ -1,0 +1,23 @@
+.flex {
+  height: 100%;
+  width: 100%;
+  border-bottom: 2px solid rgba(128, 128, 128, 0.744);
+}
+
+.space{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.foodLink {
+  display: flex;
+  overflow-x:hidden;
+}
+
+.foodLink img{
+  border-style: none;
+  height: 200px;
+  width: 160px;
+}
