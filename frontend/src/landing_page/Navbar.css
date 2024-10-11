@@ -1,0 +1,36 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+
+.bar{
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid white;
+  box-shadow: 0 1px rgba(128, 128, 128, 0.523);
+  align-items: center;
+  height: 4rem;
+}
+h1{
+  position: relative;
+  margin-left: 2rem;
+
+}
+
+.other ul{
+  display: flex;
+  list-style-type: none;
+  margin-right: 2rem;
+
+}
+
+li  a{
+  text-decoration: none;
+  color: #000000;
+  margin-right: 1.7rem;
+  font-size: 1.5rem;
+}
+
