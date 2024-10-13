@@ -1,9 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useState } from "react";
+import { Await, Link } from "react-router-dom";
 import "./Home.css";
 
 function Mind() {
+const [slide,setSlide]= useState(0)
+
+const nextSlide=()=>{
+  if(slide==1) return false;
+  setSlide(slide+0.5);
+}
+
+const prevSlide=()=>{
+  if(slide==0) return false;
+  setSlide(slide-0.5);
+}
+
   return (
     <div className="container flex mb-5 mt-4">
       <div className="space">
@@ -11,13 +22,12 @@ function Mind() {
           <h2>What's on your mind?</h2>
         </div>
         <div className="arrow">
-          <span>
+          <span id="left" onClick={prevSlide} >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="50"
               height="30"
               fill="currentColor"
-              class="bi bi-arrow-left-circle"
               viewBox="0 0 16 16"
             >
               <path
@@ -26,13 +36,12 @@ function Mind() {
               />
             </svg>
           </span>
-          <span>
+          <span id="right" onClick={nextSlide}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="50"
               height="30"
               fill="currentColor"
-              class="bi bi-arrow-right-circle"
               viewBox="0 0 16 16"
             >
               <path
@@ -43,7 +52,8 @@ function Mind() {
           </span>
         </div>
       </div>
-      <div className="foodLink">
+      <div className="hidden">
+      <div className="foodLink" style={{transform:`translateX(-${slide*100}%)`}}>
         <Link to="" target="_self">
           <img src="\image\Pizzas.avif"></img>
         </Link>
@@ -89,6 +99,10 @@ function Mind() {
         <Link to="" target="_self">
           <img src="\image\Somasa.avif"></img>
         </Link>
+        <Link to="" target="_self">
+          <img src="\image\kachori.avif"></img>
+        </Link>
+      </div>
       </div>
     </div>
   );

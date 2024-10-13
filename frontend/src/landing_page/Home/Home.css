@@ -13,7 +13,9 @@
 
 .foodLink {
   display: flex;
-  overflow-x:hidden;
+}
+.hidden{
+  overflow: hidden;
 }
 
 .foodLink img{
