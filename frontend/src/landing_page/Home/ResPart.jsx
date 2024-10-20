@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { MdStars } from "react-icons/md";
 import { Link } from "react-router-dom";
-import "./Home.css";
+// import "./Home.css";
 
-function Mind() {
+function ResPart() {
   const [slide, setSlide] = useState(0);
+  const [data, setData] = useState([]);
 
   const nextSlide = () => {
-    if (slide == 1.5) return false;
-    setSlide(slide +.5);
+    if (slide > 3.8) return false;
+    console.log(slide);
+    setSlide(slide + 0.5);
   };
 
   const prevSlide = () => {
@@ -15,18 +18,18 @@ function Mind() {
     setSlide(slide - 0.5);
   };
 
-  const [data, setdata] = useState([]);
-
   async function fetchData() {
     const data = await fetch(
       "/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const result = await data.json();
-    // console.log(
-    //   result?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
-    // );
-    setdata(
-      result?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
+    console.log(
+      result?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    setData(
+      result?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
     );
   }
 
@@ -35,12 +38,12 @@ function Mind() {
   }, []);
 
   return (
-    <div className="container flex mb-5 mt-4">
+    <div className="container broder">
       <div className="space">
-        <div className="">
-          <h2>What's on your mind?</h2>
+        <div className="contain">
+          <h2>Top restaurant chain in Atarra</h2>
         </div>
-        <div className="arrow">
+        <div className="move">
           <span id="left" onClick={prevSlide}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -71,20 +74,31 @@ function Mind() {
           </span>
         </div>
       </div>
-      <div className="hidden">
+      <div className="container mt-3 menu mb-3">
         <div
-          className="foodLink"
+          className="menu-row"
           style={{ transform: `translateX(-${slide * 100}%)` }}
         >
-          {
-            data.map((item)=>(
-              <Link ><img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/${item.imageId}`}></img></Link>
-            ))
-          }
+          {data.map((item) => (
+            <div className="img">
+              <img
+                src={
+                  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+                  item?.info?.cloudinaryImageId
+                }
+              ></img>
+              <div className="gradent"></div>
+
+              <p className="sale">
+                {item?.info?.aggregatedDiscountInfoV3?.header +
+                  item?.info?.aggregatedDiscountInfoV3?.subHeader}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 }
 
-export default Mind;
+export default ResPart;

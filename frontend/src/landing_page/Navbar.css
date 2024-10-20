@@ -13,6 +13,7 @@
   box-shadow: 0 1px rgba(128, 128, 128, 0.523);
   align-items: center;
   height: 4rem;
+  width: 100%;
 }
 h1{
   position: relative;
