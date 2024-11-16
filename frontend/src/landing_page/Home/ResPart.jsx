@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { MdStars } from "react-icons/md";
-import { Link } from "react-router-dom";
+// import { MdStars } from "react-icons/md";
+// import { Link } from "react-router-dom";
 // import "./Home.css";
 
 function ResPart() {
@@ -14,13 +14,13 @@ function ResPart() {
   };
 
   const prevSlide = () => {
-    if (slide == 0) return false;
+    if (slide === 0) return false;
     setSlide(slide - 0.5);
   };
 
   async function fetchData() {
     const data = await fetch(
-      "/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const result = await data.json();
     console.log(
@@ -86,7 +86,7 @@ function ResPart() {
                   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
                   item?.info?.cloudinaryImageId
                 }
-              ></img>
+            alt={item.name || 'food image'}  ></img>
               <div className="gradent"></div>
 
               <p className="sale">

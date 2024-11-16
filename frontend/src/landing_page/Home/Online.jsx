@@ -25,7 +25,7 @@ function SomeMore() {
                   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
                   item?.info?.cloudinaryImageId
                 }
-              ></img>
+             alt={item.name || 'food'} ></img>
         ))
       }
     </div>

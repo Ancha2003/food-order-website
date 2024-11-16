@@ -5,8 +5,8 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
 $servername = "localhost";
-$username = "root"; // Update with your actual username
-$password = ""; // Update with your actual password
+$username = "root"; 
+$password = ""; 
 $dbname = "food-order-website";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

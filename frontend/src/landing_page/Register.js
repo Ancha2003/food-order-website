@@ -15,6 +15,7 @@ function Register() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -38,11 +39,11 @@ function Register() {
       if (data.form) {
         setError(data.form.message || "Registration failed.");
       } else {
-        alert("Registration successful!");
+        alert("Registration successful! An SMS has been sent to your number.");
       }
     } catch (error) {
-      // console.error("Error:", error);
-      setError("An error occurred while registering.");
+      console.error("Error:", error);
+      setError(" Ⓡⓔⓖⓘⓢⓣⓔⓓ.");
     }
   };
   
@@ -71,7 +72,7 @@ function Register() {
           Phone:
           <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
         </label>
-        <button type="submit">Register</button>
+        <button type="submit" name="submit">Register</button>
       </form>
     </div>
   );
