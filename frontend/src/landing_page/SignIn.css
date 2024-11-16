@@ -1,0 +1,41 @@
+/* SignIn.css */
+.sign-in-container {
+    width: 300px;
+    margin: 50px auto;
+    text-align: center;
+  }
+  
+  .sign-in-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .sign-in-form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+  }
+  
+  .sign-in-form input {
+    padding: 8px;
+    font-size: 1rem;
+  }
+  
+  .sign-in-form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .sign-in-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .phone-verification {
+    margin-top: 15px;
+    color: green;
+  }
+  
