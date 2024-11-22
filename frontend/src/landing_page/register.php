@@ -23,24 +23,30 @@ if (empty($data['name']) || empty($data['email']) || empty($data['password']) ||
     exit;
 }
 
+// Validate phone number format
+if (!preg_match('/^\+?[1-9]\d{1,14}$/', "+" . preg_replace('/^0+/', '', $data['phone']))) {
+    echo json_encode(["form" => ["message" => "Invalid phone number format. Please include the country code."]]);
+    exit;
+}
+
 // Prepare and bind
 $stmt = $conn->prepare("INSERT INTO users (name, email, password, address, phone) VALUES (?, ?, ?, ?, ?)");
 $stmt->bind_param("sssss", $data['name'], $data['email'], password_hash($data['password'], PASSWORD_DEFAULT), $data['address'], $data['phone']);
 
 if ($stmt->execute()) {
     // SMS Code Start Here
-    $baseUrl = "https://pe256l.api.infobip.com"; // Replace with correct region
-    $apiKey = "15dff41e530408e13b98c5d510c796ff-635fbea4-df97-45a4-b83f-2e42c7001885"; // Your API Key
+    $baseUrl = "https://pe256l.api.infobip.com"; 
+    $apiKey = "15dff41e530408e13b98c5d510c796ff-635fbea4-df97-45a4-b83f-2e42c7001885"; 
     $smsEndpoint = $baseUrl . "/sms/2/text/advanced";
 
     $smsMessage = [
         "messages" => [
             [
-                "from" => "FoodOrder", // Sender ID
+                "from" => "FoodOrder", // Approved sender ID
                 "destinations" => [
-                    ["to" => "+".ltrim($data['phone'], '0')] // Ensure E.164 format
+                    ["to" => "+" . preg_replace('/^0+/', '', $data['phone'])] // E.164 format
                 ],
-                "text" => "Hello " . $data['name'] . ", welcome to Food Order Website! Your registration is successful."
+                "text" => "Hello " . htmlspecialchars($data['name'], ENT_QUOTES, 'UTF-8') . ", welcome to Food Order Website! Your registration is successful."
             ]
         ]
     ];
@@ -61,16 +67,22 @@ if ($stmt->execute()) {
     $curlError = curl_error($curl);
 
     // Debug: Log Response and Errors
-    file_put_contents("sms_debug_log.txt", "Response: $response\nError: $curlError\n");
+    file_put_contents(
+        "sms_debug_log.txt",
+        "Response: $response\nError: $curlError\nPhone: {$data['phone']}\nMessage Payload: " . json_encode($smsMessage) . "\n",
+        FILE_APPEND
+    );
 
     if ($curlError) {
         echo json_encode(["form" => ["message" => "Registration successful but SMS failed: $curlError"]]);
     } else {
         $result = json_decode($response, true);
+        // Check if response contains status information
         if (isset($result['messages'][0]['status']['groupName']) && $result['messages'][0]['status']['groupName'] === "DELIVERED") {
             echo json_encode(["message" => "Registration successful. SMS sent successfully!"]);
         } else {
-            echo json_encode(["form" => ["message" => "SMS sending failed: " . ($result['messages'][0]['status']['description'] ?? 'Unknown error')]]);
+            $errorMsg = $result['messages'][0]['status']['description'] ?? 'Unknown error';
+            echo json_encode(["form" => ["message" => "SMS sending failed: $errorMsg"]]);
         }
     }
 
@@ -79,7 +91,6 @@ if ($stmt->execute()) {
 } else {
     echo json_encode(["form" => ["message" => "Error: " . $stmt->error]]);
 }
-
 
 // Close the database connection
 $stmt->close();

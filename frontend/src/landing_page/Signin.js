@@ -12,9 +12,11 @@ function Signin() {
     setFormData({ ...formData, [name]: value });
   };
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("Form Data:", formData);
+  
     try {
       const response = await fetch("http://localhost:8080/food-order-website/backend/sign_in.php", {
         method: "POST",
@@ -23,12 +25,13 @@ function Signin() {
         },
         body: JSON.stringify(formData),
       });
-
+  
       const data = await response.json();
-
+      console.log("Server Response:", data);
+  
       if (response.ok) {
-        alert(data.message); // Show success message
-        navigate("/home"); // Redirect to the home page after successful sign-in
+        alert(data.message);
+        navigate("/home");
       } else {
         setError(data.message || "Sign in failed.");
       }
@@ -37,6 +40,7 @@ function Signin() {
       setError("An error occurred while signing in.");
     }
   };
+  
 
   return (
     <div className="sign-in-container">

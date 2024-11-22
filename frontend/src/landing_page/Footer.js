@@ -20,24 +20,24 @@ function Footer() {
             <div>
               <ul>
                 <li>
-                  <a className="text-muted" href="">
+                  <a className="text-muted" href="text">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a className="text-muted" href="">
+                  <a className="text-muted" href="text">
                     
                     J.D Corporate
                   </a>
                 </li>
                 <li>
-                  <a className="text-muted" href="">
+                  <a className="text-muted" href="text">
               
                     Careers
                   </a>
                 </li>
                 <li>
-                  <a className="text-muted" href="">
+                  <a className="text-muted" href="text">
                 
                     Team
                   </a>
@@ -51,18 +51,18 @@ function Footer() {
               <ul>
                 <li>
                   {" "}
-                  <a className="text-muted" href="">
+                  <a className="text-muted" href="text">
                     Help & Support
                   </a>
                 </li>
 
                 <li>
-                  <a className="text-muted" href="">
+                  <a className="text-muted" href="text">
                     Partner with us
                   </a>
                 </li>
                 <li>
-                  <a className="text-muted" href="">
+                  <a className="text-muted" href="text">
                     Ride with us
                   </a>
                 </li>
@@ -74,24 +74,24 @@ function Footer() {
             <div>
               <ul>
                 <li>
-                  <a className="text-muted" href="">
+                  <a className="text-muted" href="text">
                     Terms & Conditions
                   </a>
                 </li>
                 <li>
-                  <a className="text-muted" href="">
+                  <a className="text-muted" href="text">
                     {" "}
                     Cookie Policy
                   </a>
                 </li>
                 <li>
-                  <a className="text-muted" href="">
+                  <a className="text-muted" href="text">
                     {" "}
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a className="text-muted" href="">
+                  <a className="text-muted" href="text">
                     {" "}
                     Investor Relations
                   </a>

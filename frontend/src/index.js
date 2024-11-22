@@ -7,6 +7,8 @@ import Footer from "./landing_page/Footer";
 import HomePage from "./landing_page/Home/HomePage";
 import Signin from "./landing_page/Signin";
 import Register from "./landing_page/Register";
+import RestaurantRegister from "./landing_page/Restaurant";
+import Menu from "./landing_page/Menu";
 
 
 
@@ -19,6 +21,8 @@ root.render(
       <Route path="/home" element={<HomePage />} /> {/* Home route */}
       <Route path="/register" element={<Register />} />
       <Route path="/sign-in" element={<Signin />} />
+      <Route path="/Restaurant" element={<RestaurantRegister />} />
+     
     </Routes>
     <Footer />
   </BrowserRouter>
