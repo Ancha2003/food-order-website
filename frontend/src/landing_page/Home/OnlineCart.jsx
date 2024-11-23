@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdStars } from "react-icons/md";
+import "./Home.css";
 
 function OnlineCart(item) {
   return (
-    <div>
+    <div className="online-cart">
       <div className="abc">
         <img
           src={
@@ -12,7 +13,13 @@ function OnlineCart(item) {
             item?.info?.cloudinaryImageId
           }
           alt="no"
-        ></img>
+        />
+        <button
+          className="add-to-cart"
+          onClick={() => (window.location.href = "/cart")}
+        >
+          Add to Cart
+        </button>
         <Link to={`/demo/${item.info.id}`}>
           <div className="again"></div>
         </Link>
@@ -21,6 +28,7 @@ function OnlineCart(item) {
             item?.info?.aggregatedDiscountInfoV3?.subHeader}
         </p>
       </div>
+
       <div className="detele">
         <h2>{item?.info?.name}</h2>
         <p>

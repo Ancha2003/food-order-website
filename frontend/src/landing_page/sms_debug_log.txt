@@ -8,3 +8,7 @@ Response: {"messages":[{"messageId":"4319233557954335940042","status":{"descript
 Error: 
 Phone: 9219673644
 Message Payload: {"messages":[{"from":"FoodOrder","destinations":[{"to":"+9219673644"}],"text":"Hello Ankush Kumar, welcome to Food Order Website! Your registration is successful."}]}
+Response: {"messages":[{"messageId":"4322692161424335582649","status":{"description":"Message sent to next instance","groupId":1,"groupName":"PENDING","id":26,"name":"PENDING_ACCEPTED"},"to":"+9219673644"}]}
+Error: 
+Phone: 9219673644
+Message Payload: {"messages":[{"from":"FoodOrder","destinations":[{"to":"+9219673644"}],"text":"Hello jiya, welcome to Food Order Website! Your registration is successful."}]}

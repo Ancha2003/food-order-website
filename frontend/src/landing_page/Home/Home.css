@@ -139,3 +139,42 @@ img:hover{
   scale: 1.09;
 }
 
+
+
+/*cart*/
+.abc {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.abc img {
+opacity: 1.09;
+}
+
+.add-to-cart {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  padding: 10px 20px; /* Adjust size */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1.2rem; /* Larger text size */
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10; /* Ensure it's above the image */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.abc:hover .add-to-cart {
+  opacity: 1; /* Button becomes visible on hover */
+}
+
+.add-to-cart:hover {
+  background-color: #ff3b2f; /* Change color on hover */
+  transition: background-color 0.3s ease;
+}
