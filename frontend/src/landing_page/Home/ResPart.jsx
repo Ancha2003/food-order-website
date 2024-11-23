@@ -4,15 +4,8 @@ function ResPart() {
   const [slide, setSlide] = useState(0);
   const [data, setData] = useState([]);
 
-  const nextSlide = () => {
-    if (slide > 3.8) return;
-    setSlide(slide + 0.5);
-  };
-
-  const prevSlide = () => {
-    if (slide === 0) return;
-    setSlide(slide - 0.5);
-  };
+  const nextSlide = () => setSlide((prev) => Math.min(prev + 0.5, 3.8));
+  const prevSlide = () => setSlide((prev) => Math.max(prev - 0.5, 0));
 
   async function fetchData() {
     try {
@@ -60,15 +53,18 @@ function ResPart() {
               <div className="img" key={item.info.id}>
                 <img
                   src={
-                    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
                     item?.info?.cloudinaryImageId
+                      ? "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+                        item?.info?.cloudinaryImageId
+                      : "https://via.placeholder.com/150"
                   }
                   alt={item?.info?.name || "food image"}
                 />
                 <div className="gradent"></div>
                 <p className="sale">
-                  {item?.info?.aggregatedDiscountInfoV3?.header +
-                    item?.info?.aggregatedDiscountInfoV3?.subHeader}
+                  {`${item?.info?.aggregatedDiscountInfoV3?.header || ""} ${
+                    item?.info?.aggregatedDiscountInfoV3?.subHeader || ""
+                  }`}
                 </p>
               </div>
             ))
